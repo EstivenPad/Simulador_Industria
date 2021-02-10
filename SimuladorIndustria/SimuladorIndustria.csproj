@@ -97,5 +97,17 @@
   <ItemGroup>
     <None Include="Resources\aeb3256c3c_grand-m-instagram.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-transparent-วิทยา-ซัพพลาย-แอนด์-เซอร์วิส-work-machine-force-electricity-others-rectangle-industrial-work.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maquina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maquina en buen estado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maquina averiada.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

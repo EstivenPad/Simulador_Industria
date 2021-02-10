@@ -21,7 +21,7 @@ namespace SimuladorIndustria
 
         private void AceptarButton_Click(object sender, EventArgs e)
         {
-            CantidadProductosFabricar = Convert.ToInt32(CantidadProductosTextBox.Text);
+            CantidadProductosFabricar = Convert.ToInt64(CantidadProductosTextBox.Text);
             
             MainForm ventana = new MainForm();
             ventana.ShowDialog();

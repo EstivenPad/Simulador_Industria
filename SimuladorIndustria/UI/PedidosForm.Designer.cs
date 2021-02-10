@@ -37,25 +37,28 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 40);
+            this.label1.Location = new System.Drawing.Point(29, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(369, 25);
+            this.label1.Size = new System.Drawing.Size(302, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Digite la cantidad de productos a fabricar:";
             // 
             // CantidadProductosTextBox
             // 
-            this.CantidadProductosTextBox.Location = new System.Drawing.Point(129, 95);
+            this.CantidadProductosTextBox.Location = new System.Drawing.Point(97, 77);
+            this.CantidadProductosTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CantidadProductosTextBox.Name = "CantidadProductosTextBox";
-            this.CantidadProductosTextBox.Size = new System.Drawing.Size(192, 22);
+            this.CantidadProductosTextBox.Size = new System.Drawing.Size(145, 20);
             this.CantidadProductosTextBox.TabIndex = 1;
             // 
             // AceptarButton
             // 
             this.AceptarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AceptarButton.Location = new System.Drawing.Point(177, 139);
+            this.AceptarButton.Location = new System.Drawing.Point(133, 113);
+            this.AceptarButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AceptarButton.Name = "AceptarButton";
-            this.AceptarButton.Size = new System.Drawing.Size(104, 38);
+            this.AceptarButton.Size = new System.Drawing.Size(78, 31);
             this.AceptarButton.TabIndex = 2;
             this.AceptarButton.Text = "Aceptar";
             this.AceptarButton.UseVisualStyleBackColor = true;
@@ -63,13 +66,15 @@
             // 
             // PedidosForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 201);
+            this.ClientSize = new System.Drawing.Size(352, 163);
             this.Controls.Add(this.AceptarButton);
             this.Controls.Add(this.CantidadProductosTextBox);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PedidosForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

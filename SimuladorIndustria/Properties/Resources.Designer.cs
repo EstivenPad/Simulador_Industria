@@ -79,5 +79,46 @@ namespace SimuladorIndustria.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Maquina {
+            get {
+                object obj = ResourceManager.GetObject("Maquina", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Maquina_averiada {
+            get {
+                object obj = ResourceManager.GetObject("Maquina averiada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Maquina_en_buen_estado {
+            get {
+                object obj = ResourceManager.GetObject("Maquina en buen estado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_วิทยา_ซัพพลาย_แอนด์_เซอร์วิส_work_machine_force_electricity_others_rectangle_industrial_work {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-วิทยา-ซัพพลาย-แอนด์-เซอร์วิส-work-machine-force-electricity-other" +
+                        "s-rectangle-industrial-work", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
