@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataGridView = new System.Windows.Forms.DataGridView();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadProducidaMaquina1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadProducidaMaquina2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadProducidaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadProducidaALaFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IniciarButton = new System.Windows.Forms.Button();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.M1Averiada = new System.Windows.Forms.PictureBox();
@@ -42,11 +47,14 @@
             this.M2Averiada = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadProducidaMaquina1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadProducidaMaquina2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadProducidaTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadProducidaALaFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MateriaPrimaLb = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Maquina1Lb = new System.Windows.Forms.Label();
+            this.Maquina2Lb = new System.Windows.Forms.Label();
+            this.HayRepuestosLb = new System.Windows.Forms.Label();
+            this.NoHayRepuestosLb = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MateriaPrimaTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M1Averiada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M2Arreglada)).BeginInit();
@@ -54,20 +62,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.Maquina2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Maquina1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M2Averiada)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataGridView
             // 
             this.DataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Dia,
@@ -79,16 +88,49 @@
             this.DataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.DataGridView.RowTemplate.Height = 24;
             this.DataGridView.Size = new System.Drawing.Size(1169, 280);
             this.DataGridView.TabIndex = 0;
             // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Día";
+            this.Dia.MinimumWidth = 6;
+            this.Dia.Name = "Dia";
+            // 
+            // CantidadProducidaMaquina1
+            // 
+            this.CantidadProducidaMaquina1.HeaderText = "Cantidad producida máquina 1";
+            this.CantidadProducidaMaquina1.MinimumWidth = 6;
+            this.CantidadProducidaMaquina1.Name = "CantidadProducidaMaquina1";
+            this.CantidadProducidaMaquina1.Width = 255;
+            // 
+            // CantidadProducidaMaquina2
+            // 
+            this.CantidadProducidaMaquina2.HeaderText = "Cantidad producida máquina 2";
+            this.CantidadProducidaMaquina2.MinimumWidth = 6;
+            this.CantidadProducidaMaquina2.Name = "CantidadProducidaMaquina2";
+            this.CantidadProducidaMaquina2.Width = 255;
+            // 
+            // CantidadProducidaTotal
+            // 
+            this.CantidadProducidaTotal.HeaderText = "Cantidad total producida";
+            this.CantidadProducidaTotal.MinimumWidth = 6;
+            this.CantidadProducidaTotal.Name = "CantidadProducidaTotal";
+            this.CantidadProducidaTotal.Width = 230;
+            // 
+            // CantidadProducidaALaFecha
+            // 
+            this.CantidadProducidaALaFecha.HeaderText = "Cantidad producida a la fecha";
+            this.CantidadProducidaALaFecha.Name = "CantidadProducidaALaFecha";
+            this.CantidadProducidaALaFecha.Width = 250;
+            // 
             // IniciarButton
             // 
             this.IniciarButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IniciarButton.Location = new System.Drawing.Point(541, 99);
+            this.IniciarButton.Location = new System.Drawing.Point(537, 11);
             this.IniciarButton.Margin = new System.Windows.Forms.Padding(2);
             this.IniciarButton.Name = "IniciarButton";
             this.IniciarButton.Size = new System.Drawing.Size(94, 44);
@@ -188,44 +230,102 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Máquina 2";
             // 
-            // Dia
+            // MateriaPrimaLb
             // 
-            this.Dia.HeaderText = "Día";
-            this.Dia.MinimumWidth = 6;
-            this.Dia.Name = "Dia";
+            this.MateriaPrimaLb.AutoSize = true;
+            this.MateriaPrimaLb.Font = new System.Drawing.Font("Georgia", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MateriaPrimaLb.Location = new System.Drawing.Point(94, 53);
+            this.MateriaPrimaLb.Name = "MateriaPrimaLb";
+            this.MateriaPrimaLb.Size = new System.Drawing.Size(530, 25);
+            this.MateriaPrimaLb.TabIndex = 10;
+            this.MateriaPrimaLb.Text = "Queda poca materia prima, debe reabastecerse";
+            this.MateriaPrimaLb.Visible = false;
             // 
-            // CantidadProducidaMaquina1
+            // groupBox1
             // 
-            this.CantidadProducidaMaquina1.HeaderText = "Cantidad producida máquina 1";
-            this.CantidadProducidaMaquina1.MinimumWidth = 6;
-            this.CantidadProducidaMaquina1.Name = "CantidadProducidaMaquina1";
-            this.CantidadProducidaMaquina1.Width = 255;
+            this.groupBox1.Controls.Add(this.NoHayRepuestosLb);
+            this.groupBox1.Controls.Add(this.HayRepuestosLb);
+            this.groupBox1.Controls.Add(this.Maquina2Lb);
+            this.groupBox1.Controls.Add(this.Maquina1Lb);
+            this.groupBox1.Controls.Add(this.MateriaPrimaLb);
+            this.groupBox1.Font = new System.Drawing.Font("Georgia", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(234, 121);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(724, 138);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
             // 
-            // CantidadProducidaMaquina2
+            // Maquina1Lb
             // 
-            this.CantidadProducidaMaquina2.HeaderText = "Cantidad producida máquina 2";
-            this.CantidadProducidaMaquina2.MinimumWidth = 6;
-            this.CantidadProducidaMaquina2.Name = "CantidadProducidaMaquina2";
-            this.CantidadProducidaMaquina2.Width = 255;
+            this.Maquina1Lb.AutoSize = true;
+            this.Maquina1Lb.Font = new System.Drawing.Font("Georgia", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Maquina1Lb.Location = new System.Drawing.Point(201, 53);
+            this.Maquina1Lb.Name = "Maquina1Lb";
+            this.Maquina1Lb.Size = new System.Drawing.Size(304, 25);
+            this.Maquina1Lb.TabIndex = 11;
+            this.Maquina1Lb.Text = "Se ha dañado la máquina 1";
+            this.Maquina1Lb.Visible = false;
             // 
-            // CantidadProducidaTotal
+            // Maquina2Lb
             // 
-            this.CantidadProducidaTotal.HeaderText = "Cantidad total producida";
-            this.CantidadProducidaTotal.MinimumWidth = 6;
-            this.CantidadProducidaTotal.Name = "CantidadProducidaTotal";
-            this.CantidadProducidaTotal.Width = 230;
+            this.Maquina2Lb.AutoSize = true;
+            this.Maquina2Lb.Font = new System.Drawing.Font("Georgia", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Maquina2Lb.Location = new System.Drawing.Point(201, 53);
+            this.Maquina2Lb.Name = "Maquina2Lb";
+            this.Maquina2Lb.Size = new System.Drawing.Size(307, 25);
+            this.Maquina2Lb.TabIndex = 12;
+            this.Maquina2Lb.Text = "Se ha dañado la máquina 2";
+            this.Maquina2Lb.Visible = false;
             // 
-            // CantidadProducidaALaFecha
+            // HayRepuestosLb
             // 
-            this.CantidadProducidaALaFecha.HeaderText = "Cantidad producida a la fecha";
-            this.CantidadProducidaALaFecha.Name = "CantidadProducidaALaFecha";
-            this.CantidadProducidaALaFecha.Width = 250;
+            this.HayRepuestosLb.AutoSize = true;
+            this.HayRepuestosLb.Font = new System.Drawing.Font("Georgia", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HayRepuestosLb.Location = new System.Drawing.Point(269, 92);
+            this.HayRepuestosLb.Name = "HayRepuestosLb";
+            this.HayRepuestosLb.Size = new System.Drawing.Size(171, 25);
+            this.HayRepuestosLb.TabIndex = 13;
+            this.HayRepuestosLb.Text = "Hay repuestos";
+            this.HayRepuestosLb.Visible = false;
+            // 
+            // NoHayRepuestosLb
+            // 
+            this.NoHayRepuestosLb.AutoSize = true;
+            this.NoHayRepuestosLb.Font = new System.Drawing.Font("Georgia", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoHayRepuestosLb.Location = new System.Drawing.Point(254, 92);
+            this.NoHayRepuestosLb.Name = "NoHayRepuestosLb";
+            this.NoHayRepuestosLb.Size = new System.Drawing.Size(201, 25);
+            this.NoHayRepuestosLb.TabIndex = 14;
+            this.NoHayRepuestosLb.Text = "No hay repuestos";
+            this.NoHayRepuestosLb.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(426, 77);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(152, 23);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Materia prima";
+            // 
+            // MateriaPrimaTextBox
+            // 
+            this.MateriaPrimaTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MateriaPrimaTextBox.Location = new System.Drawing.Point(584, 76);
+            this.MateriaPrimaTextBox.Name = "MateriaPrimaTextBox";
+            this.MateriaPrimaTextBox.Size = new System.Drawing.Size(148, 26);
+            this.MateriaPrimaTextBox.TabIndex = 13;
+            this.MateriaPrimaTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 555);
+            this.Controls.Add(this.MateriaPrimaTextBox);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.M2Averiada);
             this.Controls.Add(this.M1Averiada);
             this.Controls.Add(this.label2);
@@ -248,6 +348,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Maquina2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Maquina1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M2Averiada)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +373,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadProducidaMaquina2;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadProducidaTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadProducidaALaFecha;
+        private System.Windows.Forms.Label MateriaPrimaLb;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label Maquina2Lb;
+        private System.Windows.Forms.Label Maquina1Lb;
+        private System.Windows.Forms.Label NoHayRepuestosLb;
+        private System.Windows.Forms.Label HayRepuestosLb;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox MateriaPrimaTextBox;
     }
 }
