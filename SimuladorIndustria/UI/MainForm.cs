@@ -47,6 +47,11 @@ namespace SimuladorIndustria
             Timer.Enabled = true;
         }
 
+        private void DetenerButton_Click(object sender, EventArgs e)
+        {
+            Timer.Enabled = false;
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             SimularProduccion();

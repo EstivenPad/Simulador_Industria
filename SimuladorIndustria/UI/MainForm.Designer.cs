@@ -59,6 +59,7 @@
             this.MetodoAumentoProduccionM2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadProducirTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.DetenerButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M1Averiada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M2Arreglada)).BeginInit();
@@ -103,7 +104,7 @@
             // IniciarButton
             // 
             this.IniciarButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IniciarButton.Location = new System.Drawing.Point(724, 11);
+            this.IniciarButton.Location = new System.Drawing.Point(652, 11);
             this.IniciarButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IniciarButton.Name = "IniciarButton";
             this.IniciarButton.Size = new System.Drawing.Size(94, 44);
@@ -362,11 +363,24 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Cantidad faltante por producir";
             // 
+            // DetenerButton
+            // 
+            this.DetenerButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DetenerButton.Location = new System.Drawing.Point(767, 11);
+            this.DetenerButton.Margin = new System.Windows.Forms.Padding(2);
+            this.DetenerButton.Name = "DetenerButton";
+            this.DetenerButton.Size = new System.Drawing.Size(94, 44);
+            this.DetenerButton.TabIndex = 16;
+            this.DetenerButton.Text = "Detener";
+            this.DetenerButton.UseVisualStyleBackColor = true;
+            this.DetenerButton.Click += new System.EventHandler(this.DetenerButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1517, 555);
+            this.Controls.Add(this.DetenerButton);
             this.Controls.Add(this.CantidadProducirTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.MateriaPrimaTextBox);
@@ -431,5 +445,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MetodoAumentoProduccionM2;
         private System.Windows.Forms.TextBox CantidadProducirTextBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button DetenerButton;
     }
 }
