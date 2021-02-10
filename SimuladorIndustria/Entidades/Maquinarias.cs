@@ -11,7 +11,7 @@ namespace SimuladorIndustria
         public int ProductosHora { get; set; }
         public bool Averiada { get; set; }
         public bool Arreglada { get; set; }
-        public int CantidadProducidaDia { get; set; }
+        public double CantidadProducidaDia { get; set; }
         public int CantidadDiasAveriada { get; set; }
 
         public Maquinarias()

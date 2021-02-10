@@ -14,15 +14,13 @@ namespace SimuladorIndustria
     public partial class MainForm : Form
     {
         Random aleatorio = new Random();
-        //public List<Dias> Dias = new List<Dias>();
         public Maquinarias maquinaria1 = new Maquinarias();
         public Maquinarias maquinaria2 = new Maquinarias();
         public int ProductoHoraMaquinaria1 = 50;
         public int ProductoHoraMaquinaria2 = 40;
         public int MateriaPrima;        
-        public Dias Dia = new Dias();
+        public Dias Dias = new Dias();
              
-
         public MainForm()
         {
             InitializeComponent();
@@ -30,20 +28,20 @@ namespace SimuladorIndustria
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //SimularProduccion();
+
         }
 
         public void SimularProduccion()
         {          
             if (PedidosForm.CantidadProductosFabricar != 0)
             {
-                Dia.Numero++;
+                Dias.Numero++;
                 maquinaria1.CantidadProducidaDia = ProductoHoraMaquinaria1 * 10;
                 maquinaria2.CantidadProducidaDia = ProductoHoraMaquinaria2 * 10;
 
-                Dia.CantidadProducida = maquinaria1.CantidadProducidaDia + maquinaria2.CantidadProducidaDia;
+                Dias.CantidadProducida = maquinaria1.CantidadProducidaDia + maquinaria2.CantidadProducidaDia;
 
-                if(Dia.Numero >= 30)
+                if(Dias.Numero >= 30)
                 {
                     if (maquinaria1.Averiada == false)
                         maquinaria1.ConocerEstadoMaquinaria();
@@ -55,6 +53,10 @@ namespace SimuladorIndustria
                     {
                         ProductoHoraMaquinaria1 = 0;
                         maquinaria1.CantidadDiasAveriada++;
+
+                        maquinaria2.CantidadProducidaDia *= 0.20;
+
+
                     }
 
                 }
@@ -73,9 +75,10 @@ namespace SimuladorIndustria
                 //***************************************
 
                 //Dias.Add(Dia);
-                DataGridView.Rows.Add(Dia.Numero,Dia.CantidadProducida);
-                PedidosForm.CantidadProductosFabricar -= Dia.CantidadProducida;
-                //Thread.Sleep(5000);
+                DataGridView.Rows.Add(Dias.Numero, maquinaria1.CantidadProducidaDia, maquinaria2.CantidadProducidaDia, Dias.CantidadProducida);
+                DataGridView.FirstDisplayedScrollingRowIndex = DataGridView.RowCount - 1;
+                PedidosForm.CantidadProductosFabricar -= Dias.CantidadProducida;
+                
             }
         }
 
@@ -83,7 +86,6 @@ namespace SimuladorIndustria
         {
             MateriaPrima = aleatorio.Next(5000, 500000);
             Timer.Enabled = true;
-            //SimularProduccion();
         }
 
         private void Timer_Tick(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace SimuladorIndustria
 {
     public partial class PedidosForm : Form
     {
-        public static int CantidadProductosFabricar;
+        public static double CantidadProductosFabricar;
 
         public PedidosForm()
         {

@@ -3,7 +3,7 @@
     public class Dias
     {
         public int Numero { get; set; } = 0;
-        public int CantidadProducida { get; set; } = 0;
+        public double CantidadProducida { get; set; } = 0;
 
         public Dias()
         {
