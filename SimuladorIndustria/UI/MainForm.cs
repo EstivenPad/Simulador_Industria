@@ -17,9 +17,12 @@ namespace SimuladorIndustria
         public Maquinarias maquinaria1 = new Maquinarias();
         public Maquinarias maquinaria2 = new Maquinarias();
         public Dias Dias = new Dias();
-        public double MateriaPrima;
+        public double MateriaPrima, CantidadProductosFabricar;
         public int DiasAveriadaM1 = 1, DiasAveriadaM2 = 1;
         public int OpcionElegida;
+        public string Ninguno = "Ninguno";
+        public string AumentoHoras = "Aumento de horas";
+        public string AumentoPorciento = "Aumento a un 20% de la productividad";
         public int probabilidad = 1;
              
         public MainForm()
@@ -29,9 +32,12 @@ namespace SimuladorIndustria
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //MateriaPrima = aleatorio.Next(900, (int)PedidosForm.CantidadProductosFabricar);
-            MateriaPrima = 5000;
+            CantidadProductosFabricar = aleatorio.Next(40000, 500000);
+            MateriaPrima = aleatorio.Next(900, (int)CantidadProductosFabricar);
+
             MateriaPrimaTextBox.Text = Convert.ToString(MateriaPrima);
+            CantidadProducirTextBox.Text = Convert.ToString(CantidadProductosFabricar);
+
             maquinaria1.ProductosHora = 50;
             maquinaria2.ProductosHora = 40;
         }
@@ -49,7 +55,7 @@ namespace SimuladorIndustria
         public void SimularProduccion()
         {
 
-            if (PedidosForm.CantidadProductosFabricar > 0)
+            if (CantidadProductosFabricar > 0)
             {
                 if (MateriaPrima > 900)// Si hay materia prima
                 {
@@ -58,6 +64,8 @@ namespace SimuladorIndustria
                     MateriaPrimaLb.Visible = false;
                     maquinaria1.CantidadProducidaDia = maquinaria1.ProductosHora * 10;
                     maquinaria2.CantidadProducidaDia = maquinaria2.ProductosHora * 10;
+                    maquinaria1.MetodoAumentoProduccion = Ninguno;
+                    maquinaria2.MetodoAumentoProduccion = Ninguno;
 
                     if (Dias.Numero >= 30)//Si pasó el mes
                     {
@@ -79,7 +87,7 @@ namespace SimuladorIndustria
                         {
                             Timer.Interval = 2000;
                             Maquina1Lb.Visible = true;
-                            maquinaria1.ProductosHora = 0;
+                            maquinaria1.CantidadProducidaDia = 0;
 
                             if (maquinaria1.CantidadDiasAveriada == 0)
                             {
@@ -91,63 +99,79 @@ namespace SimuladorIndustria
                                 else
                                     DiasAveriadaM1 = 3;
                                 OpcionElegida = aleatorio.Next(0, 1);//Determinar metodo para reponer producción 
+                                maquinaria1.AumentarProduccion = true;
                             }
                             maquinaria1.CantidadDiasAveriada++;
+                        }
+
+                        if (maquinaria1.AumentarProduccion == true)//Si hay que aumentar la produccion
+                        {
                             maquinaria2.DiasReponerProduccion++;
-
-                            if (maquinaria2.DiasReponerProduccion >= 1)
-                                maquinaria2.DiasReponerProduccion++;
-
                             //Si no hay repuestos
                             if (DiasAveriadaM1 == 3)
                             {
-                                NoHayRepuestosLb.Visible = true;
+                                if (maquinaria1.Averiada == true)
+                                    NoHayRepuestosLb.Visible = true;
+
                                 Timer.Interval = 2000;
                                 if (maquinaria2.DiasReponerProduccion <= 19)//En 19 dias repone la producción
                                 {
                                     if (OpcionElegida == 0)//Se aumenta la cantidad de horas trabajadas
                                     {
+                                        maquinaria2.MetodoAumentoProduccion = AumentoHoras;
                                         maquinaria2.CantidadProducidaDia = maquinaria2.ProductosHora * 12;
                                     }
                                     else//Se aumenta en un 20% la productividad de la maquina
                                     {
+                                        maquinaria2.MetodoAumentoProduccion = AumentoPorciento;
                                         maquinaria2.CantidadProducidaDia *= 0.20;
                                     }
 
                                     if (maquinaria2.DiasReponerProduccion++ == 19)
+                                    {
                                         maquinaria2.DiasReponerProduccion = 0;
+                                        maquinaria1.AumentarProduccion = false;
+                                    }
                                 }
                             }
                             //Si hay repuestos
                             else if (DiasAveriadaM1 == 2)
                             {
-                                HayRepuestosLb.Visible = true;
+                                if (maquinaria1.Averiada == true)
+                                    HayRepuestosLb.Visible = true;
+
                                 Timer.Interval = 2000;
                                 if (maquinaria2.DiasReponerProduccion <= 13)//En 13 dias repone la produccion
                                 {
                                     if (OpcionElegida == 0)//Se aumenta la cantidad de horas trabajadas
                                     {
+                                        maquinaria2.MetodoAumentoProduccion = AumentoHoras;
                                         maquinaria2.CantidadProducidaDia = maquinaria2.ProductosHora * 12;
                                     }
                                     else//Se aumenta en un 20% la productividad de la maquina
                                     {
+                                        maquinaria2.MetodoAumentoProduccion = AumentoPorciento;
                                         maquinaria2.CantidadProducidaDia *= 0.20;
                                     }
 
                                     if (maquinaria2.DiasReponerProduccion++ == 13)
+                                    {
                                         maquinaria2.DiasReponerProduccion = 0;
+                                        maquinaria1.AumentarProduccion = false;
+                                    }
                                 }
                             }
                         }
+
                         //--------------------------------------------------------------------------------------------------//
 
                         //----------------------------------------Maquina 2 averiada----------------------------------------//
                         if (maquinaria2.Averiada == true && maquinaria1.Averiada == false)
                         {
-                            Maquina2Lb.Visible = true;
-                            maquinaria2.ProductosHora = 0;
-
                             Timer.Interval = 2000;
+                            Maquina2Lb.Visible = true;
+                            maquinaria2.CantidadProducidaDia = 0;
+
                             if (maquinaria2.CantidadDiasAveriada == 0)
                             {
                                 M2Averiada.Visible = true;
@@ -157,51 +181,66 @@ namespace SimuladorIndustria
                                 else
                                     DiasAveriadaM2 = 3;
                                 OpcionElegida = aleatorio.Next(0, 1);//Determinar metodo para reponer produccion 
+                                maquinaria2.AumentarProduccion = true;
                             }
                             maquinaria2.CantidadDiasAveriada++;
+                        }
+
+                        if (maquinaria2.AumentarProduccion == true)//Si hay que aumentar la produccion
+                        {
                             maquinaria1.DiasReponerProduccion++;
-
-                            if (maquinaria1.DiasReponerProduccion >= 1)
-                                maquinaria1.DiasReponerProduccion++;
-
                             //Si no hay repuestos
                             if (DiasAveriadaM2 == 3)
                             {
-                                NoHayRepuestosLb.Visible = true;
+                                if (maquinaria2.Averiada == true)
+                                    NoHayRepuestosLb.Visible = true;
+
                                 Timer.Interval = 2000;
-                                if (maquinaria1.DiasReponerProduccion++ <= 12)//En 12 dias repone la produccion
+                                if (maquinaria1.DiasReponerProduccion <= 12)//En 12 dias repone la produccion
                                 {
                                     if (OpcionElegida == 0)//Se aumenta la cantidad de horas trabajadas
                                     {
+                                        maquinaria1.MetodoAumentoProduccion = AumentoHoras;
                                         maquinaria1.CantidadProducidaDia = maquinaria1.ProductosHora * 12;
                                     }
                                     else//Se aumenta en un 20% la productividad de la maquina
                                     {
+                                        maquinaria1.MetodoAumentoProduccion = AumentoPorciento;
                                         maquinaria1.CantidadProducidaDia *= 0.20;
                                     }
 
-                                    if (maquinaria1.DiasReponerProduccion++ == 12)
+                                    if (maquinaria1.DiasReponerProduccion == 12)
+                                    {
                                         maquinaria1.DiasReponerProduccion = 0;
+                                        maquinaria2.AumentarProduccion = false;
+                                    }
                                 }
                             }
                             //Si hay repuestos
                             else if (DiasAveriadaM2 == 2)
                             {
-                                HayRepuestosLb.Visible = true;
+                                if (maquinaria2.Averiada == true)
+                                    HayRepuestosLb.Visible = true;
+
                                 Timer.Interval = 2000;
-                                if (maquinaria1.DiasReponerProduccion++ <= 8)//En 8 dias repone la produccion
+                                if (maquinaria1.DiasReponerProduccion <= 8)//En 8 dias repone la produccion
                                 {
                                     if (OpcionElegida == 0)//Se aumenta la cantidad de horas trabajadas
                                     {
+                                        maquinaria1.MetodoAumentoProduccion = AumentoHoras;
                                         maquinaria1.CantidadProducidaDia = maquinaria1.ProductosHora * 12;
                                     }
                                     else//Se aumenta en un 20% la productividad de la maquina
                                     {
+                                        maquinaria1.MetodoAumentoProduccion = AumentoPorciento;
                                         maquinaria1.CantidadProducidaDia *= 0.20;
                                     }
 
-                                    if (maquinaria1.DiasReponerProduccion++ == 8)
+                                    if (maquinaria1.DiasReponerProduccion == 8)
+                                    {
                                         maquinaria1.DiasReponerProduccion = 0;
+                                        maquinaria2.AumentarProduccion = false;
+                                    }
                                 }
                             }
                         }
@@ -230,21 +269,22 @@ namespace SimuladorIndustria
                         NoHayRepuestosLb.Visible = false;
                     }
 
-                    PedidosForm.CantidadProductosFabricar -= Dias.CantidadProducida;
+                    CantidadProductosFabricar -= Dias.CantidadProducida;
                     Dias.CantidadProducida = maquinaria1.CantidadProducidaDia + maquinaria2.CantidadProducidaDia;
                     Dias.CantidadProducidaALaFecha += Dias.CantidadProducida;
                     MateriaPrima -= Dias.CantidadProducida;
                     MateriaPrimaTextBox.Text = Convert.ToString(MateriaPrima);
+                    CantidadProducirTextBox.Text = Convert.ToString(CantidadProductosFabricar);
 
                     //Cargar datos al data grid
-                    DataGridView.Rows.Add(Dias.Numero, maquinaria1.CantidadProducidaDia, maquinaria2.CantidadProducidaDia, Dias.CantidadProducida, Dias.CantidadProducidaALaFecha);
+                    DataGridView.Rows.Add(Dias.Numero, maquinaria1.CantidadProducidaDia, maquinaria2.CantidadProducidaDia, Dias.CantidadProducida, Dias.CantidadProducidaALaFecha, maquinaria1.MetodoAumentoProduccion, maquinaria2.MetodoAumentoProduccion);
                     DataGridView.FirstDisplayedScrollingRowIndex = DataGridView.RowCount - 1;
                 }
                 else//Si queda poca materia prima
                 {
                     MateriaPrimaLb.Visible = true;
                     Timer.Interval = 3000;
-                    MateriaPrima = aleatorio.Next(900, (int)PedidosForm.CantidadProductosFabricar);
+                    MateriaPrima = aleatorio.Next(900, (int)CantidadProductosFabricar);
                 }
             }
             else//Si se acaban los pedidos

@@ -10,16 +10,17 @@ namespace SimuladorIndustria
     {
         public int ProductosHora { get; set; }
         public bool Averiada { get; set; }
-        public bool Arreglada { get; set; }
+        public bool AumentarProduccion { get; set; }
         public bool PiezaDisponible { get; set; }
         public double CantidadProducidaDia { get; set; }
         public int CantidadDiasAveriada { get; set; }
         public int DiasReponerProduccion { get; set; }
+        public string MetodoAumentoProduccion { get; set; }
         public Maquinarias()
         {
             ProductosHora = 0;
             Averiada = false;
-            Arreglada = false;
+            AumentarProduccion = false;
             PiezaDisponible = false;
             CantidadProducidaDia = 0;
             CantidadDiasAveriada = 0;

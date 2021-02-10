@@ -16,7 +16,7 @@ namespace SimuladorIndustria
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PedidosForm());
+            Application.Run(new MainForm());
         }
     }
 }
