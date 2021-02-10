@@ -46,26 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainForm.cs">
+    <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="UI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maquinarias.cs" />
-    <Compile Include="Nodo.cs" />
-    <Compile Include="PedidosForm.cs">
+    <Compile Include="Entidades\Maquinarias.cs" />
+    <Compile Include="Entidades\Dias.cs" />
+    <Compile Include="UI\PedidosForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PedidosForm.Designer.cs">
+    <Compile Include="UI\PedidosForm.Designer.cs">
       <DependentUpon>PedidosForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PedidosForm.resx">
+    <EmbeddedResource Include="UI\PedidosForm.resx">
       <DependentUpon>PedidosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

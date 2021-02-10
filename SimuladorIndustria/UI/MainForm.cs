@@ -7,19 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace SimuladorIndustria
 {
     public partial class MainForm : Form
     {
         Random aleatorio = new Random();
+        //public List<Dias> Dias = new List<Dias>();
         public Maquinarias maquinaria1 = new Maquinarias();
         public Maquinarias maquinaria2 = new Maquinarias();
         public int ProductoHoraMaquinaria1 = 50;
         public int ProductoHoraMaquinaria2 = 40;
-             
         public int MateriaPrima;        
-        public List<Dias> Dia = new List<Dias>();
+        public Dias Dia = new Dias();
+             
 
         public MainForm()
         {
@@ -28,23 +30,20 @@ namespace SimuladorIndustria
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            SimularProduccion();
+            //SimularProduccion();
         }
 
         public void SimularProduccion()
-        {
-            MateriaPrima = aleatorio.Next(5000, 500000);
-            Dias Nodo = new Dias();            
-
-            while (PedidosForm.CantidadProductosFabricar != 0)
+        {          
+            if (PedidosForm.CantidadProductosFabricar != 0)
             {
-                Nodo.Dia++;
+                Dia.Numero++;
                 maquinaria1.CantidadProducidaDia = ProductoHoraMaquinaria1 * 10;
                 maquinaria2.CantidadProducidaDia = ProductoHoraMaquinaria2 * 10;
 
-                Nodo.CantidadProducida = maquinaria1.CantidadProducidaDia + maquinaria2.CantidadProducidaDia;
+                Dia.CantidadProducida = maquinaria1.CantidadProducidaDia + maquinaria2.CantidadProducidaDia;
 
-                if(Nodo.Dia > 30)
+                if(Dia.Numero >= 30)
                 {
                     if (maquinaria1.Averiada == false)
                         maquinaria1.ConocerEstadoMaquinaria();
@@ -55,14 +54,10 @@ namespace SimuladorIndustria
                     if(maquinaria1.Averiada == true && maquinaria2.Averiada == false)
                     {
                         ProductoHoraMaquinaria1 = 0;
-                        //maquinaria1.CantidadDiasAveriada++;
+                        maquinaria1.CantidadDiasAveriada++;
                     }
 
                 }
-
-               
-
-
 
                 //***************Maquinaria 1 Arreglada************************
                 if (maquinaria1.CantidadDiasAveriada == 3)
@@ -77,8 +72,23 @@ namespace SimuladorIndustria
                 }
                 //***************************************
 
-                Dia.Add(Nodo);
+                //Dias.Add(Dia);
+                DataGridView.Rows.Add(Dia.Numero,Dia.CantidadProducida);
+                PedidosForm.CantidadProductosFabricar -= Dia.CantidadProducida;
+                //Thread.Sleep(5000);
             }
+        }
+
+        private void IniciarButton_Click(object sender, EventArgs e)
+        {
+            MateriaPrima = aleatorio.Next(5000, 500000);
+            Timer.Enabled = true;
+            //SimularProduccion();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            SimularProduccion();
         }
     }
 }

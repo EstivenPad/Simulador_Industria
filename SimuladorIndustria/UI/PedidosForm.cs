@@ -21,11 +21,10 @@ namespace SimuladorIndustria
 
         private void AceptarButton_Click(object sender, EventArgs e)
         {
-            MainForm ventana = new MainForm();
-            
             CantidadProductosFabricar = Convert.ToInt32(CantidadProductosTextBox.Text);
-
-            ventana.Show();
+            
+            MainForm ventana = new MainForm();
+            ventana.ShowDialog();
         }
     }
 }

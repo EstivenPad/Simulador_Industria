@@ -33,16 +33,4 @@ namespace SimuladorIndustria
                 Averiada = true;
         }
     }
-
-    public class Dias
-    {
-        public int Dia { get; set; }
-        public int CantidadProducida { get; set; }
-        
-        public Dias()
-        {
-            Dia = 0;
-            CantidadProducida = 0;
-        }
-    }
 }
