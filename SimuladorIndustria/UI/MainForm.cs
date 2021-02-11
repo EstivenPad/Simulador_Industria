@@ -289,7 +289,15 @@ namespace SimuladorIndustria
                 {
                     MateriaPrimaLb.Visible = true;
                     Timer.Interval = 3000;
-                    MateriaPrima = aleatorio.Next(900, (int)CantidadProductosFabricar);
+
+                    if (CantidadProductosFabricar > 900)
+                    {
+                        MateriaPrima = aleatorio.Next(900, (int)CantidadProductosFabricar);
+                    }
+                    else
+                    {
+                        MateriaPrima += 900;
+                    }
                 }
             }
             else//Si se acaban los pedidos
